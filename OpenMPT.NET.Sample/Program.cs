@@ -34,7 +34,7 @@ device.BufferFinished += (system, channel, buffer) =>
     // (This stalling issue MAY be fixed in later mixr versions).
     Task.Run(() =>
     {
-        Console.Write($"Filling buffer {currentBuffer}... ");
+        //Console.Write($"Filling buffer {currentBuffer}... ");
         
         // This code is similar to the code when we created the buffers.
         // Advance the buffer, and check to see if it is 0. If it is, stop the channel playing.
@@ -49,7 +49,7 @@ device.BufferFinished += (system, channel, buffer) =>
         system.UpdateBuffer(buffers[currentBuffer], module.Buffer[..(numSamples * 2)]);
         system.QueueBuffer(buffers[currentBuffer], channel);
         
-        Console.WriteLine("Done!");
+        //Console.WriteLine("Done!");
 
         // Increase the current buffer, looping back round to 0 if it has run out of buffers to fill.
         currentBuffer++;
@@ -67,6 +67,9 @@ for (int i = 1; i < buffers.Length; i++)
 while (device.IsPlaying(channel))
 {
     Thread.Sleep(1000);
+    
+    double seconds = module.PositionInSeconds;
+    Console.WriteLine($"{(int) seconds / 60:00}:{(int) seconds % 60:00}");
 }
 
 // Once done, dispose of the module...

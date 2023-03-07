@@ -24,6 +24,11 @@ public unsafe class Module : IDisposable
     /// </summary>
     public readonly float[] Buffer;
 
+    /// <summary>
+    /// Get the current song position in seconds.
+    /// </summary>
+    public double PositionInSeconds => ModuleGetPositionSeconds(_module);
+
     private Module(IntPtr module)
     {
         _module = module;
@@ -45,6 +50,27 @@ public unsafe class Module : IDisposable
             read = ModuleReadInterleavedFloatStereo(_module, SampleRate, (nuint) (Buffer.Length / 2), ptr);
 
         return (int) read;
+    }
+
+    /// <summary>
+    /// Attempt to seek to the given order and row.
+    /// </summary>
+    /// <param name="order">The order to seek to.</param>
+    /// <param name="row">The row within that order to seek to.</param>
+    /// <returns>The approximate new song position in seconds.</returns>
+    public double Seek(int order, int row)
+    {
+        return ModuleSetPositionOrderRow(_module, order, row);
+    }
+
+    /// <summary>
+    /// Attempt to seek to the given number of seconds.
+    /// </summary>
+    /// <param name="seconds">The seconds to seek to.</param>
+    /// <returns>The approximate new song position in seconds.</returns>
+    public double Seek(double seconds)
+    {
+        return ModuleSetPositionSeconds(_module, seconds);
     }
 
     /// <summary>
