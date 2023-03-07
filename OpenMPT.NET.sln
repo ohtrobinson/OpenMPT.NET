@@ -1,0 +1,22 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMPT.NET", "OpenMPT.NET\OpenMPT.NET.csproj", "{A68B1755-0AF2-4110-A575-04193255CDBF}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OpenMPT.NET.Sample", "OpenMPT.NET.Sample\OpenMPT.NET.Sample.csproj", "{5F03943C-8240-4E9D-92AF-8409E7F40D44}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A68B1755-0AF2-4110-A575-04193255CDBF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A68B1755-0AF2-4110-A575-04193255CDBF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A68B1755-0AF2-4110-A575-04193255CDBF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A68B1755-0AF2-4110-A575-04193255CDBF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5F03943C-8240-4E9D-92AF-8409E7F40D44}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5F03943C-8240-4E9D-92AF-8409E7F40D44}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5F03943C-8240-4E9D-92AF-8409E7F40D44}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5F03943C-8240-4E9D-92AF-8409E7F40D44}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
