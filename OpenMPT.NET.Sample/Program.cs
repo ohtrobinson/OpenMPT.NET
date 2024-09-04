@@ -7,7 +7,8 @@ const ushort channel = 0;
 AudioDevice device = new AudioDevice(48000, 1);
 
 // Load our module, using some of the provided module options.
-Module module = Module.FromMemory(File.ReadAllBytes("ag-winmare.it"), new ModuleOptions(endBehavior: EndBehavior.Stop, tempoFactor: 1.0f, pitchFactor: 1.0f));
+Module module = Module.FromMemory(File.ReadAllBytes("ag-winmare.it"),
+    new ModuleOptions(endBehavior: EndBehavior.Stop, tempoFactor: 1.0f, pitchFactor: 1.0f));
 
 // Create our buffers and fill them.
 AudioBuffer[] buffers = new AudioBuffer[2];

@@ -78,6 +78,19 @@ public unsafe class Module : IDisposable
         return ModuleSetPositionSeconds(_module, seconds);
     }
 
+    public void SetParameter(ModuleParameter parameter, int value)
+    {
+        ModuleSetRenderParam(_module, parameter, value);
+    }
+
+    public int GetParameter(ModuleParameter parameter)
+    {
+        int value;
+        ModuleGetRenderParam(_module, parameter, &value);
+
+        return value;
+    }
+
     /// <summary>
     /// Create a <see cref="Module"/> from memory.
     /// </summary>
