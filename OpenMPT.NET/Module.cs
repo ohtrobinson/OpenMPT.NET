@@ -103,8 +103,13 @@ public unsafe class Module : IDisposable
     public static Module FromMemory(byte[] memory, ModuleOptions options)
     {
         IntPtr module;
+        
+        // What the heck is this???
+        // Seriously
+        // What in absolute atrocity is this?
+        // TODO: PinnedString you idiot!!
 
-        Ctl[] ctls = new Ctl[3];
+        Ctl[] ctls = new Ctl[4];
 
         string behaviorKey = "play.at_end";
         string behaviorValue = options.EndBehavior.ToString().ToLower();
@@ -114,6 +119,9 @@ public unsafe class Module : IDisposable
         
         string pitchKey = "play.pitch_factor";
         string pitchValue = options.PitchFactor.ToString();
+
+        string emulateAmigaKey = "render.resampler.emulate_amiga";
+        string emulateAmigaValue = options.EmulateAmigaResampler ? "1" : "0";
         
         GCHandle behaviorKeyHandle = GCHandle.Alloc(Encoding.ASCII.GetBytes(behaviorKey), GCHandleType.Pinned);
         GCHandle behaviorValueHandle = GCHandle.Alloc(Encoding.ASCII.GetBytes(behaviorValue), GCHandleType.Pinned);
@@ -123,6 +131,9 @@ public unsafe class Module : IDisposable
         
         GCHandle pitchKeyHandle = GCHandle.Alloc(Encoding.ASCII.GetBytes(pitchKey), GCHandleType.Pinned);
         GCHandle pitchValueHandle = GCHandle.Alloc(Encoding.ASCII.GetBytes(pitchValue), GCHandleType.Pinned);
+        
+        GCHandle emulateAmigaKeyHandle = GCHandle.Alloc(Encoding.ASCII.GetBytes(emulateAmigaKey), GCHandleType.Pinned);
+        GCHandle emulateAmigaValueHandle = GCHandle.Alloc(Encoding.ASCII.GetBytes(emulateAmigaValue), GCHandleType.Pinned);
 
         ctls[0] = new Ctl((sbyte*) behaviorKeyHandle.AddrOfPinnedObject(),
             (sbyte*) behaviorValueHandle.AddrOfPinnedObject());
@@ -132,6 +143,9 @@ public unsafe class Module : IDisposable
         
         ctls[2] = new Ctl((sbyte*) pitchKeyHandle.AddrOfPinnedObject(),
             (sbyte*) pitchValueHandle.AddrOfPinnedObject());
+
+        ctls[3] = new Ctl((sbyte*) emulateAmigaKeyHandle.AddrOfPinnedObject(),
+            (sbyte*) emulateAmigaValueHandle.AddrOfPinnedObject());
 
         int error;
         
@@ -145,6 +159,8 @@ public unsafe class Module : IDisposable
         tempoValueHandle.Free();
         pitchKeyHandle.Free();
         pitchValueHandle.Free();
+        emulateAmigaKeyHandle.Free();
+        emulateAmigaValueHandle.Free();
 
         ModuleResult result = (ModuleResult) error;
         
