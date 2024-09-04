@@ -21,8 +21,7 @@ public static unsafe class MptNative
     public static extern void ModuleDestroy(IntPtr module);
 
     [DllImport(LibName, EntryPoint = "openmpt_module_read_interleaved_float_stereo")]
-    public static extern nuint ModuleReadInterleavedFloatStereo(IntPtr mod, int sampleRate, nuint count,
-        float* interleavedStereo);
+    public static extern nuint ModuleReadInterleavedFloatStereo(IntPtr mod, int sampleRate, nuint count, float* interleavedStereo);
 
     [DllImport(LibName, EntryPoint = "openmpt_module_set_position_order_row")]
     public static extern double ModuleSetPositionOrderRow(IntPtr mod, int order, int row);
@@ -32,6 +31,9 @@ public static unsafe class MptNative
 
     [DllImport(LibName, EntryPoint = "openmpt_module_get_position_seconds")]
     public static extern double ModuleGetPositionSeconds(IntPtr mod);
+
+    [DllImport(LibName, EntryPoint = "openmpt_module_get_duration_seconds")]
+    public static extern double ModuleGetDurationSeconds(IntPtr mod);
 
     public unsafe struct Ctl// : IDisposable
     {

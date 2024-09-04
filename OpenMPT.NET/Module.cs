@@ -29,6 +29,11 @@ public unsafe class Module : IDisposable
     /// </summary>
     public double PositionInSeconds => ModuleGetPositionSeconds(_module);
 
+    /// <summary>
+    /// Get the duration of the song in seconds.
+    /// </summary>
+    public double DurationInSeconds => ModuleGetDurationSeconds(_module);
+
     private Module(IntPtr module)
     {
         _module = module;

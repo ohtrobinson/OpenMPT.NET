@@ -63,6 +63,9 @@ device.PlayBuffer(buffers[0], channel, new ChannelProperties(speed: 1.0));
 for (int i = 1; i < buffers.Length; i++)
     device.QueueBuffer(buffers[i], channel);
 
+double durationSeconds = module.DurationInSeconds;
+Console.WriteLine($"{(int) durationSeconds / 60:00}:{(int) durationSeconds % 60:00}");
+
 // Sleep while the device is playing.
 while (device.IsPlaying(channel))
 {
