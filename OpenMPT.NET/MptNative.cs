@@ -10,7 +10,7 @@ namespace OpenMPT.NET;
 /// </summary>
 public static unsafe class MptNative
 {
-    public const string LibName = "openmpt";
+    public const string LibName = "libopenmpt";
 
     [DllImport(LibName, EntryPoint = "openmpt_module_create_from_memory2")]
     public static extern IntPtr ModuleCreateFromMemory(void* data, nuint fileSize,

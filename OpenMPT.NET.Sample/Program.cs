@@ -6,8 +6,8 @@ const ushort channel = 0;
 // Create the Pie audio device.
 AudioDevice device = new AudioDevice(48000, 1);
 
-// Load our (totally enjoyable) module, using some of the provided module options.
-Module module = Module.FromMemory(File.ReadAllBytes("help.it"), new ModuleOptions(endBehavior: EndBehavior.Stop, tempoFactor: 1.0f, pitchFactor: 1.0f));
+// Load our module, using some of the provided module options.
+Module module = Module.FromMemory(File.ReadAllBytes("ag-winmare.it"), new ModuleOptions(endBehavior: EndBehavior.Stop, tempoFactor: 1.0f, pitchFactor: 1.0f));
 
 // Create our buffers and fill them.
 AudioBuffer[] buffers = new AudioBuffer[2];
