@@ -48,6 +48,9 @@ public struct ModuleMetadata
             
             fixed (byte* pKey = keyBytes)
                 data = new string(ModuleGetMetadata(module, (sbyte*) pKey));
+
+            if (string.IsNullOrWhiteSpace(data))
+                data = null;
             
             switch (key)
             {
