@@ -34,6 +34,8 @@ public unsafe class Module : IDisposable
     /// </summary>
     public double DurationInSeconds => ModuleGetDurationSeconds(_module);
 
+    public ModuleMetadata Metadata => ModuleMetadata.FromModule(_module);
+
     private Module(IntPtr module)
     {
         _module = module;

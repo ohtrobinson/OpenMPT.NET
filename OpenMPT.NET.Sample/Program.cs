@@ -10,6 +10,9 @@ AudioDevice device = new AudioDevice(48000, 1);
 Module module = Module.FromMemory(File.ReadAllBytes("ag-winmare.it"),
     new ModuleOptions(endBehavior: EndBehavior.Stop, tempoFactor: 1.0f, pitchFactor: 1.0f));
 
+ModuleMetadata metadata = module.Metadata;
+Console.WriteLine($"{metadata.Artist ?? "Unknown Artist"} - {metadata.Title ?? "Unknown Title"}");
+
 // Create our buffers and fill them.
 AudioBuffer[] buffers = new AudioBuffer[2];
 for (int i = 0; i < buffers.Length; i++)

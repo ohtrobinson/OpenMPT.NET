@@ -41,6 +41,12 @@ public static unsafe class MptNative
     [DllImport(LibName, EntryPoint = "openmpt_module_get_duration_seconds")]
     public static extern double ModuleGetDurationSeconds(IntPtr mod);
 
+    [DllImport(LibName, EntryPoint = "openmpt_module_get_metadata_keys")]
+    public static extern sbyte* ModuleGetMetadataKeys(IntPtr mod);
+    
+    [DllImport(LibName, EntryPoint = "openmpt_module_get_metadata")]
+    public static extern sbyte* ModuleGetMetadata(IntPtr mod, sbyte* key);
+
     public unsafe struct Ctl// : IDisposable
     {
         public sbyte* Key;
